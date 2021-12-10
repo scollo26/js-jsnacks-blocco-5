@@ -112,11 +112,26 @@ function printCards(array, containerpost) {
 }
 
 
+const changeMonths =
+
+
+// function changeDate() {
+//     for (let i = 0; i < array.length; i++) {
+//         const element = post[i];
+//         element.date =
+        
+//     }
+    
+// }
 
 
 
+
+
+
+
+// changeDate()
 printCards(post, container);
-
 
 
 
@@ -132,6 +147,33 @@ let countLike = 0;
 
 
 
+for (let i = 0; i < Button.length; i++) {
+    const element = Button[i];    //tutti i bottoni
+    // console.log(element);
+    let likes = likeButton[i];    //tutte classi like
+    // console.log(likes);
+    let elementLike = post[i].counter;
+    // console.log(elementLike);
+    let green = colorButton[i];   //classe bottone
+    // console.log(green);
+   
+    element.addEventListener('click', function clicklike(){
+        
 
+        if(green.classList.contains('like-button--liked')){
+
+            likes.innerHTML = elementLike -= 1;
+            green.classList.remove('like-button--liked');
+
+        }else{
+            likes.innerHTML = elementLike += 1;
+            green.classList.add('like-button--liked');
+        }
+        
+        console.log(elementLike);
+
+    });
+    
+}
 
 
