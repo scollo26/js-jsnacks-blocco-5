@@ -18,7 +18,7 @@ const post = [
       name: 'Phil Mangione',
       date: '4 mesi fa',
       text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
-      imageProfil:'image=15',
+      imageProfil:'',
       image:'image=171',
       counter: 80
     },
@@ -73,13 +73,18 @@ const container = document.getElementById('container');
 function printCards(array, containerpost) {
     for (let i = 0; i < array.length; i++) {
       const obj = array[i];
-  
-      const templateDiv = `
+
+      let initials = getInitials (obj.name);
+    if (obj.name == '') {
+        
+        const templateDiv = `
       <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="https://unsplash.it/300/300?${obj.imageProfil}" alt="Phil Mangione">                    
+                        <div class="profile-pic-default ">
+                            <span>${initials}</span> 
+                        </div>                
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${obj.name}</div>
@@ -106,23 +111,68 @@ function printCards(array, containerpost) {
             </div>            
         </div>`;
   
-      containerpost.innerHTML += templateDiv;
+        containerpost.innerHTML += templateDiv;
+        }else{
+            const templateDiv = `
+            <div class="post">
+                  <div class="post__header">
+                      <div class="post-meta">                    
+                          <div class="post-meta__icon">
+                              <img class="profile-pic" src="https://unsplash.it/300/300?${obj.imageProfil}" alt="Phil Mangione">                    
+                          </div>
+                          <div class="post-meta__data">
+                              <div class="post-meta__author">${obj.name}</div>
+                              <div class="post-meta__time">${obj.date}</div>
+                          </div>                    
+                      </div>
+                  </div>
+                  <div class="post__text">${obj.text}</div>
+                  <div class="post__image">
+                      <img src="https://unsplash.it/600/300?${obj.image}" alt="">
+                  </div>
+                  <div class="post__footer">
+                      <div class="likes js-likes">
+                          <div class="likes__cta">
+                              <a class="like-button  js-like-button"  data-postid="1">
+                                  <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                                  <span class="like-button__label">Mi Piace</span>
+                              </a>
+                          </div>
+                          <div class="likes__counter">
+                              Piace a <b id="like-counter-1" class="js-likes-counter">${obj.counter}</b> persone
+                          </div>
+                      </div> 
+                  </div>            
+            </div>`;
+        
+             containerpost.innerHTML += templateDiv;  
+
+        }
+
+
+
+  
+      
       //console.log(templateDiv);
     }
 }
 
 
-const changeMonths =
 
 
-// function changeDate() {
-//     for (let i = 0; i < array.length; i++) {
-//         const element = post[i];
-//         element.date =
+
+const getInitials = (name) => {
+    let init = name.split(' ');
+
+    if (init.length > 1) {
+        init = init.shift().charAt(0) + init.pop().charAt(0);
         
-//     }
-    
-// }
+    }else {
+        init = name.substring(0, 2);
+    }
+
+    return init.toUpperCase();
+}
 
 
 
@@ -130,7 +180,9 @@ const changeMonths =
 
 
 
-// changeDate()
+
+
+
 printCards(post, container);
 
 
