@@ -34,7 +34,7 @@ const post = [
         name: 'Luca Guarnera',
         date: '12 mesi fa',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
-        imageProfil:'image=17',
+        imageProfil:'',
         image:'image=175',
         counter: 10
     },
@@ -58,7 +58,7 @@ const post = [
         name: 'Miriam Antinori',
         date: '6 mesi fa',
         text: 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.',
-        imageProfil:'image=14',
+        imageProfil:'',
         image:'image=178',
         counter: 90
     },
@@ -74,11 +74,13 @@ function printCards(array, containerpost) {
     for (let i = 0; i < array.length; i++) {
       const obj = array[i];
 
+    //invocazione funzione iniziali nome
       let initials = getInitials (obj.name);
-    if (obj.name == '') {
+    //controllo se la imageProfil ha del contenuto
+    if (obj.imageProfil == '') {
         
         const templateDiv = `
-      <div class="post">
+        <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
@@ -145,22 +147,16 @@ function printCards(array, containerpost) {
                   </div>            
             </div>`;
         
-             containerpost.innerHTML += templateDiv;  
+            containerpost.innerHTML += templateDiv;  
 
         }
-
-
-
-  
-      
-      //console.log(templateDiv);
     }
 }
 
 
 
 
-
+// funzione di ricerca iniziali nome
 const getInitials = (name) => {
     let init = name.split(' ');
 
@@ -177,12 +173,7 @@ const getInitials = (name) => {
 
 
 
-
-
-
-
-
-
+// invocazione funzione inserimento post
 printCards(post, container);
 
 
