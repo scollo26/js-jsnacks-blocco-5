@@ -180,42 +180,65 @@ printCards(post, container);
 
 
 let Button = document.querySelectorAll('.likes__cta');//tutti i bottoni
-let likeButton = document.querySelectorAll('.js-likes-counter');//tutte classi like
+let likeButton = document.querySelectorAll('.js-likes-counter');//classe counter  
 let colorButton = document.querySelectorAll('.like-button');//classe bottone
-let countLike = 0;
 
 
 
+
+
+
+
+
+// for (let i = 0; i < Button.length; i++) {
+//     const element = Button[i];    //tutti i bottoni
+//     // console.log(element);
+//     let likes = likeButton[i];    //tutte classi like
+//     // console.log(likes);
+//     let elementLike = post[i].counter;
+//     // console.log(elementLike);
+//     let green = colorButton[i];   //classe bottone
+//     // console.log(green);
+   
+//     element.addEventListener('click', function(){
+        
+
+//         if(green.classList.contains('like-button--liked')){
+
+//             likes.innerHTML = elementLike -= 1;
+//             green.classList.remove('like-button--liked');
+
+//         }else{
+//             likes.innerHTML = elementLike += 1;
+//             green.classList.add('like-button--liked');
+//         }
+        
+//         console.log(elementLike);
+
+//     });
+    
+// }
 
 
 
 
 for (let i = 0; i < Button.length; i++) {
-    const element = Button[i];    //tutti i bottoni
-    // console.log(element);
-    let likes = likeButton[i];    //tutte classi like
-    // console.log(likes);
-    let elementLike = post[i].counter;
-    // console.log(elementLike);
-    let green = colorButton[i];   //classe bottone
-    // console.log(green);
-   
-    element.addEventListener('click', function clicklike(){
-        
 
-        if(green.classList.contains('like-button--liked')){
+    Button[i].addEventListener('click', function(){
 
-            likes.innerHTML = elementLike -= 1;
-            green.classList.remove('like-button--liked');
-
+        Button[i].classList.toggle('like-button--liked');
+        console.log(Button);
+        if (Button[i].classList.contains('like-button--liked')) {
+            likeButton[i].innerHTML = post[i].counter += 1;
+            colorButton[i].classList.add('like-button--liked');
         }else{
-            likes.innerHTML = elementLike += 1;
-            green.classList.add('like-button--liked');
+            likeButton[i].innerHTML = post[i].counter -= 1;
+            colorButton[i].classList.remove('like-button--liked');
         }
-        
-        console.log(elementLike);
 
     });
+    console.log(likeButton);
+    
     
 }
 
